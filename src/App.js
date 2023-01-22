@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useState, useEffect} from 'react';
+import axios from "axios";
+import DateTimePicker from "react-datetime-picker";
 
 function App() {
+
+  const [reminderMsg, setReminderMsg ] = useState("");
+  const [remindAt,setRemindAt] = useState();
+
+  const addReminder = () => {
+
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <div className = "homepage">
+
+       <div className = "homepage_header">
+         <h1>Remind me 🐱‍🏍</h1>
+         <input type = "text" placeholder = "Reminder notes here..." value = {reminderMsg} onChange = {e => setReminderMsg} />
+         <DateTimePicker 
+          value = {remindAt}
+          onChange = {setRemindAt}
+          minDate = {new Date()}
+          minutePlaceholder = "hh"
+          hourPlaceholder="hh"
+          dayPlaceholder="DD"
+          monthPlaceholder = "MM"
+          yearPlaceholder="YYYY"
+         />
+         <div className = "button" onClick= {addReminder}>Add Reminder</div>
+       </div>
+
+       
+       </div>
     </div>
   );
 }
